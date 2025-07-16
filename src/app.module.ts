@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
@@ -9,7 +10,17 @@ import { ActivityRegistrationsModule } from './activity-registrations/activity-r
 import { DatabaseModule } from './database/database.module';
 
 @Module({
-  imports: [AuthModule, UsersModule, ActivitiesModule, LocationsModule, ActivityRegistrationsModule, DatabaseModule],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true, // makes config accessible everywhere without re-import
+    }),
+    AuthModule,
+    UsersModule,
+    ActivitiesModule,
+    LocationsModule,
+    ActivityRegistrationsModule,
+    DatabaseModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
