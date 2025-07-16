@@ -11,7 +11,10 @@ import { LocationsService } from './locations.service';
 import { CreateLocationDto } from './dto/create-location.dto';
 import { UpdateLocationDto } from './dto/update-location.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from 'src/common/guards/jwt-auth-guard';
 
+@UseGuards(JwtAuthGuard)
 @ApiTags('Locations')
 @Controller('locations')
 export class LocationsController {
