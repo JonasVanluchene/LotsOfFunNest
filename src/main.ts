@@ -41,6 +41,8 @@ async function bootstrap() {
     next();
   });
 
+
+  //Swagger setup
   const config = new DocumentBuilder()
     .setTitle('Lots of Fun API')
     .setDescription('API for managing activities')
